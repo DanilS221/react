@@ -2,7 +2,7 @@ body{
   background-color: #2E2E2D;
 }
 .app-wrapper{
-  color: #CBCDD0;
+  
   
   margin: 5px auto;
 
@@ -20,38 +20,7 @@ body{
   ;
 }
 
-.header{
-  border-radius: 10px;
-  grid-area: h;
-  background-color: #545353;
 
-}
 
-.header img{
-  
 
-  width: 60px;
-  
 
-}
-
-.nav{
-  border-radius: 10px;
-  grid-area: n;
-  background-color: #545353;
-
-}
-
-.content{
-  border-radius: 10px;
-  grid-area: c;
-background-color: #545353;
-}
-.content img {
-  border-radius: 12px;
-  box-sizing:content-box;
-  margin: 15px;
-  width: 1000px;
-  height: 300px;
-  object-fit: fill;
-}

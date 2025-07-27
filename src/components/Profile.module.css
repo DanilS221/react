@@ -1,0 +1,18 @@
+.content{
+    border-radius: 10px;
+    grid-area: c;
+    background-color: #545353;
+}
+
+.content img {
+    border-radius: 12px;
+    box-sizing:content-box;
+    margin: 15px;
+    width: 1000px;
+    height: 300px;
+    object-fit: fill;
+}
+
+.item{
+    color: #ff0000;
+}

@@ -1,0 +1,8 @@
+.nav{
+    border-radius: 10px;
+    grid-area: n;
+    background-color: #545353;
+}
+.item{
+    color: #0080ff;
+}
