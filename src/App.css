@@ -20,6 +20,12 @@ body{
   ;
 }
 
+.app-wrapper-content{
+    border-radius: 10px;
+    grid-area: c;
+    background-color: #545353;
+}
+
 
 
 
