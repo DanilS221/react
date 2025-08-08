@@ -7,14 +7,16 @@
 .content img {
     border-radius: 12px;
     box-sizing:content-box;
-    margin: 15px;
     width: 1000px;
     height: 300px;
     object-fit: fill;
 }
 
-
 .posts{
-    
+    padding-top: 8px;
+}
+
+.postsAll{
+    padding: 18px;
 }
 

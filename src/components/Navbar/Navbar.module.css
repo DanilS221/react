@@ -2,7 +2,46 @@
     border-radius: 10px;
     grid-area: n;
     background-color: #545353;
+    padding: 20px;
 }
 .item{
-    color: #0080ff;
+    margin-bottom: 10px;
+}
+
+.item a{
+    text-decoration: none;
+    color: #CBCDD0;
+
+
+}
+
+.item a:not(.active):hover{
+    text-shadow: 2px 2px 2px #919191;
+}
+
+.item a.active {
+    color: #2E2E2D;
+}
+
+.friends {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 60px;
+    border: solid 2px #919191;
+    border-radius: 10px;
+    padding: 5px;
+
+
+
+}
+.friends .item a {
+    font-size: 2.2em;
+}
+
+.friendsBlock{
+    display: flex;
+
+
 }

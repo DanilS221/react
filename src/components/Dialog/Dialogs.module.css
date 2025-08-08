@@ -1,0 +1,45 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems{
+    padding: 20px;
+
+}
+
+
+.dialog{
+
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.dialog a{
+    padding-left: 5px;
+    text-decoration: none;
+    color: #CBCDD0;
+}
+
+.dialog a.active{
+    color: #2E2E2D;
+}
+
+.dialog a:not(.active):hover{
+    text-shadow: 2px 2px 2px #919191;
+}
+
+.avatar{
+    width: 25%;
+    height: 25%;
+}
+
+
+.messages{
+    padding: 20px;
+}
+
+.message{
+
+}

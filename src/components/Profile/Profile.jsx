@@ -1,17 +1,20 @@
 import React from 'react';
 import s from'./Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = () =>{
+const Profile = (props) =>{
+
+
+
+
     return(
+
         <div className={s.content}>
-            <div>
-                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Elegant_Background-17.jpg/1200px-Elegant_Background-17.jpg?20170710104936'/>
-            </div>
 
-            <div>ava + description</div>
+            <ProfileInfo/>
 
-            <MyPosts/>
+            <MyPosts postsData={props.state.postsItem}/>
 
             <div></div>
         </div>
