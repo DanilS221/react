@@ -1,5 +1,4 @@
-
-
+import {rerenderEntireTree} from "../render";
 
 
 let state={
@@ -8,6 +7,7 @@ let state={
             {id:1, text:'Привет , это  тоестовый пост', like:55},
             {id:2, text:'Меня зовут Данил', like:33},
         ],
+        newPostText: '',
     },
     messagesPage:{
         dialogs:[
@@ -32,5 +32,27 @@ let state={
 
         ],}
 }
+
+
+export let addPost =() =>{
+
+    let newPost = {
+        id:5,
+        text:state.profilePage.newPostText,
+        like:0
+    };
+
+    state.profilePage.postsItem.push(newPost);
+    state.profilePage.newPostText = '';
+    rerenderEntireTree(state);
+}
+
+export let updateNewPostText = (newText) =>{
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+}
+
+
+
 
 export default state
