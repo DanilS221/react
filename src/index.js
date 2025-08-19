@@ -7,6 +7,7 @@ import state, {subscribe, updateNewPostText} from "./redux/store";
 import {addPost} from "./redux/store";
 import store from "./redux/redux-store";
 import {BrowserRouter} from "react-router-dom";
+import StoreContext, {Provider} from "./StoreContext";
 
 
 
@@ -48,7 +49,9 @@ export let rerenderEntireTree = (state) =>{
 
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state} dispatch={store.dispatch.bind(store)} store={store}/>
+                <Provider store={store}>
+                    <App />
+                </Provider>
             </BrowserRouter>
         </React.StrictMode>
     );
