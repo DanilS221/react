@@ -10,11 +10,12 @@ const Profile = (props) =>{
 
 
 
+
     return(
 
         <div className={s.content}>
 
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile} status={props.status} updateStatusThunkCreator={props.updateStatusThunkCreator}/>
 
             <MyPostsContainer />
 

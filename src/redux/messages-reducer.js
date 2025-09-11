@@ -24,10 +24,15 @@ let initialState = {
 
 const messagesReducer = (state = initialState, action) => {
 
+
+
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newMesText;
-            return state;
+            return{
+                ...state,
+            newMessageText: action.newMesText
+            };
+
 
 
         case SEND_MESSAGE:
@@ -35,9 +40,13 @@ const messagesReducer = (state = initialState, action) => {
                 id: 4,
                 text: state.newMessageText,
             }
-            state.messages.push(newMessage);
-            state.newMessageText = '';
-            return state;
+
+            return{
+                ...state,
+                newMessageText: '',
+                messages:[...state.messages, newMessage]
+            };
+
 
             
         default:

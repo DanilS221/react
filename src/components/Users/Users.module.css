@@ -1,0 +1,97 @@
+.selectedPage{
+    padding: 5px;
+
+    font-weight: bold;
+}
+
+.number{
+    cursor: pointer;
+    padding-right: 2px;
+}
+
+.photo{
+    width: 100px;
+    height: 100px;
+}
+
+.itemUser{
+    display: flex;
+    justify-content: space-between;
+    background-color: #A4A6A8;
+    margin: 10px;
+    padding: 5px 5px 10px 10px;
+    border-radius: 10px;
+}
+.avatarName{
+    display: flex;
+
+}
+.photoButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.photoButton button{
+    margin-top: 5px;
+    border: none;
+    border-radius: 3px;
+}
+.photoButton button.follower{
+background-color: #919191;
+}
+
+.photoButton button:hover{
+    background-color: #606060;
+}
+/*.photoButton button:{}*/
+
+
+
+
+.nameStatus{
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*top: -20px;*/
+    padding-top: 15px ;
+    padding-left: 15px;
+}
+
+.nameUser{
+    font-size: 20px;
+}
+
+
+.location{
+    width: 100px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+
+.buttonSwitch{
+    border-radius: 5px;
+    background-color: #A4A6A8;
+
+}
+
+
+
+
+
+.preloader{
+    width: 100px;
+}
+
+
+
+
+
+
+
+
+

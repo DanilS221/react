@@ -3,6 +3,7 @@ import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message";
 import {addNewMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/messages-reducer";
+import {Navigate} from "react-router-dom";
 
 
 
@@ -11,16 +12,11 @@ const Dialogs = (props) => {
     let state = props.messagesPage;
 
 
-    let dialogsElements = state.dialogs.map(d=>{return (<DialogItem name={d.name} id={d.id} avatar={d.avatar}/>)})
+    let dialogsElements = state.dialogs.map(d=>{return (<DialogItem name={d.name} id={d.id} key={d.id} avatar={d.avatar}/>)})
 
-    let messagesElements = state.messages.map(m=>{return (<Message text={m.text} id={m.id}/>)})
+    let messagesElements = state.messages.map(m=>{return (<Message text={m.text} id={m.id} key={m.id} />)})
 
     let newMessageText = state.newMessageText;
-
-
-
-
-
 
 
     let onSendMessageClick = () =>{
@@ -34,6 +30,8 @@ const Dialogs = (props) => {
 
 
     }
+
+
 
 
 
