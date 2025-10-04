@@ -1,6 +1,6 @@
 import profileReducer from "./profile-reducer";
 
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+// const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 const SEND_MESSAGE = 'SEND_MESSAGE';
 
 
@@ -18,7 +18,7 @@ let initialState = {
         {id:2, text:'JS'},
         {id:3, text:'OK'},
     ],
-    newMessageText: ''
+
 
 }
 
@@ -27,23 +27,21 @@ const messagesReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return{
-                ...state,
-            newMessageText: action.newMesText
-            };
+        // case UPDATE_NEW_MESSAGE_TEXT:
+        //     return{
+        //         ...state,
+        //     newMessageText: action.newMesText
+        //     };
 
 
 
         case SEND_MESSAGE:
             let newMessage = {
                 id: 4,
-                text: state.newMessageText,
+                text: action.dataForm,
             }
-
             return{
                 ...state,
-                newMessageText: '',
                 messages:[...state.messages, newMessage]
             };
 
@@ -56,8 +54,8 @@ const messagesReducer = (state = initialState, action) => {
 }
 
 
-export const updateNewMessageTextActionCreator=(text)=>({type: UPDATE_NEW_MESSAGE_TEXT, newMesText: text})
-export const addNewMessageActionCreator=()=>({type: SEND_MESSAGE})
+// export const updateNewMessageTextActionCreator=(text)=>({type: UPDATE_NEW_MESSAGE_TEXT, newMesText: text})
+export const addNewMessageActionCreator=(dataForm)=>({type: SEND_MESSAGE , dataForm})
 
 
 export default messagesReducer;

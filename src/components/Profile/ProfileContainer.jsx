@@ -27,10 +27,14 @@ class ProfileContainer extends React.Component{
 
 
         let userId= this.props.router.params.userId
+
         if(!userId){
-            userId =32578
+            
+            userId =this.props.autorizedUserId
+
         }
         this.props.getUserProfileThunkCreator(userId)
+
 
         this.props.getStatusThunkCreator(userId)
         //TODO: Узнать как зарефакторить это , тут я делаю проверку на статус , если его нет то автоматически добавлятся хардкод
@@ -59,7 +63,10 @@ class ProfileContainer extends React.Component{
 
 let mapStateToProps = (state) => ({
     profile : state.profilePage.profile,
-    status : state.profilePage.status
+    status : state.profilePage.status,
+
+    autorizedUserId: state.auth.id,
+    isAuth: state.auth.isAuth,
 
 })
 let mapDispatchToProps = (dispatch) => {

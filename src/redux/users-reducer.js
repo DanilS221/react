@@ -144,31 +144,26 @@ export const setFollowingInProgress = (status,userId) =>{
 
 
 export const getUsersThunkCreator = (currentPage,pageSize) =>{
-   return (dispatch) =>{
+   return async (dispatch) =>{
         dispatch(setIsFetching(true))
 
-        usersAPI.getUsers(currentPage , pageSize)
-            .then((data) => {
-                dispatch(setIsFetching(false));
-                dispatch(setUsers(data.items));
-                dispatch(setTotalUserCount(data.totalCount));
-            })
+        let data = await usersAPI.getUsers(currentPage , pageSize);
+        dispatch(setIsFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUserCount(data.totalCount));
     }
 }
 
 export const unFollow = (userID) =>{
-    return (dispatch) =>{
+    return async (dispatch) =>{
         dispatch(setFollowingInProgress(true,userID))
 
-        usersAPI.unFollow(userID)
-            .then((data) => {
-                if(data.resultCode === 0){
-                    dispatch(unFollowSuccsess(userID));
-                }
+        let data = await usersAPI.unFollow(userID)
 
-                dispatch(setFollowingInProgress(false,userID))
-
-            });
+        if(data.resultCode === 0){
+            dispatch(unFollowSuccsess(userID));
+        }
+        dispatch(setFollowingInProgress(false,userID))
     }
 }
 

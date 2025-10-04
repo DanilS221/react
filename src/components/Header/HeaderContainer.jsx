@@ -3,14 +3,12 @@ import React from 'react';
 import Header from "./Header";
 
 import {connect} from "react-redux";
-import {autorizationThunk } from "../../redux/auth-reducer";
+import { logoutThunk} from "../../redux/auth-reducer";
 
 
 class HeaderContainer extends React.Component  {
 
-    componentDidMount() {
-        this.props.autorizationThunk()
-    }
+
 
     render(){
         return(
@@ -32,9 +30,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
 
-
-        autorizationThunk:()=>{
-            dispatch(autorizationThunk())
+        logoutThunk:()=>{
+            dispatch(logoutThunk())
         }
 
 

@@ -4,6 +4,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import {type} from "@testing-library/user-event/dist/type";
 import UserImage from "./../../../saveDate(hardCode)/images/UserImages.png";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 
 
 const ProfileInfo = (props) =>{
@@ -38,7 +39,7 @@ const ProfileInfo = (props) =>{
                 </div>
 
                 <div><h3 className={s.info}> {props.profile.fullName}</h3>
-                    <ProfileStatus status={props.status} updateStatusThunkCreator={props.updateStatusThunkCreator}/>
+                    <ProfileStatusWithHooks status={props.status} updateStatusThunkCreator={props.updateStatusThunkCreator}/>
                 <span className={s}>{props.profile.aboutMe}</span>
                 </div>
 

@@ -1,7 +1,8 @@
 import {headerAPI, usersAPI} from "../API/API";
+import {stopSubmit} from "redux-form";
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const SET_USER_PHOTOS = 'SET_USER_PHOTOS';
+const SET_USER_DATA = 'AUTH/SET_USER_DATA';
+const SET_USER_PHOTOS = 'AUTH/SET_USER_PHOTOS';
 
 let initialState = {
     id:null,
@@ -19,7 +20,6 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
-                isAuth: true
             }
         case SET_USER_PHOTOS:
             return {
@@ -31,27 +31,43 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setUserDataAC = (id,login,email) => ({type: SET_USER_DATA, data:{id,login,email}})
+export const setUserDataAC = (id,login,email,isAuth) => ({type: SET_USER_DATA, data:{id,login,email,isAuth}})
 export const setUserPhotoAC = (photo) => ({type: SET_USER_PHOTOS, photo})
 
 
-export const autorizationThunk=()=>{
-    return(dispatch)=>{
-        headerAPI.authorization()
-            .then((response) => {
+export const autorizationThunk=()=>  async (dispatch)=>{
+       let response =  await headerAPI.authorization()
+
                 if(response.data.resultCode===0){
 
                     let {id, login,email}=response.data.data;
-                    dispatch(setUserDataAC(id,login,email));
-                    usersAPI.getProfile(id)
-                        .then((data) => {
+                    dispatch(setUserDataAC(id,login,email, true));
+                    let data = await usersAPI.getProfile(id)
                             dispatch(setUserPhotoAC(data.photos.small));
-
-                        })
                 }
 
-            })
-    }
 }
+
+export const loginThunk = (email, password, rememberMe) =>  async (dispatch)=>{
+       let response=  await headerAPI.login(email, password, rememberMe)
+            if(response.data.resultCode===0){
+                dispatch(autorizationThunk())
+            }
+            else {
+
+                let messages = response.data.messages.length>0?response.data.messages[0]:"Ошибка";
+                let action = stopSubmit("login", {_error: messages})
+                dispatch(action)
+            }
+}
+
+export const logoutThunk = () =>
+    async (dispatch)=>{
+        let response = await headerAPI.logout();
+            if(response.data.resultCode===0){
+                dispatch(setUserDataAC(null,null,null, false));
+            }
+
+    }
 
 export default authReducer;

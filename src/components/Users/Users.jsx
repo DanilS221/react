@@ -24,8 +24,8 @@ let Users = (props)=>{
         <div>
             {
                 pages.map((item)=>{
-
-                    return <span onClick={()=>{props.onPageChange(item)}} className={props.currentPage === item ? s.selectedPage: s.number}>{item}</span>})
+                    
+                    return <span key={item} onClick={()=>{props.onPageChange(item)}} className={props.currentPage === item ? s.selectedPage: s.number}>{item}</span>})
             }
         </div>
         <button className={s.buttonSwitch} onClick={()=>props.backPage()}>Назад</button>

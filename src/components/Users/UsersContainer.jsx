@@ -8,14 +8,20 @@ import {
     setUsers,
     unFollow
 } from "../../redux/users-reducer";
-import axios from "axios";
+
 import Users from "./Users";
-import preloader from './../../saveDate(hardCode)/images/infinite-spinner.svg';
-import s from './Users.module.css'
+
 import Preloader from "../common/Preloader/Preloader";
-import {usersAPI} from "../../API/API";
+
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {
+    getCountButtonPages,
+    getCurrentPage, getFollowingInProgress, getIsFetching,
+    getPageSize,
+    getTotalUsersCount, getUsersReselector,
+
+} from "../../redux/users-selector";
 
 
 
@@ -51,7 +57,7 @@ class UsersContainer extends React.Component{
         this.onPageChange(this.props.currentPage + 1)
     }
     backPage = () => {
-        if(this.props.currentPage != 1){
+        if(this.props.currentPage !== 1){
             this.onPageChange(this.props.currentPage - 1)
         }
 
@@ -59,6 +65,7 @@ class UsersContainer extends React.Component{
 
 
     render(){
+        console.log("render")
         return <>
             {this.props.isFetching ? <Preloader/>:
                 <Users totalUsersCount={this.props.totalUsersCount}
@@ -77,20 +84,40 @@ class UsersContainer extends React.Component{
     }
 }
 
+// let mapStateToProps = (state)=>{
+//     return {
+//         users: state.usersPage.users,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         pageSize: state.usersPage.pageSize,
+//         currentPage: state.usersPage.currentPage,
+//         countButtonPages: state.usersPage.countButtonPages,
+//
+//         isFetching: state.usersPage.isFetching,
+//
+//         followingInProgress: state.usersPage.followingInProgress,
+//
+//     }
+// }
+
+
 let mapStateToProps = (state)=>{
+    console.log("mapStateToProps")
     return {
-        users: state.usersPage.users,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        pageSize: state.usersPage.pageSize,
-        currentPage: state.usersPage.currentPage,
-        countButtonPages: state.usersPage.countButtonPages,
 
-        isFetching: state.usersPage.isFetching,
+        users: getUsersReselector(state),
+        totalUsersCount: getTotalUsersCount(state),
+        pageSize: getPageSize(state),
+        currentPage: getCurrentPage(state),
+        countButtonPages: getCountButtonPages(state),
 
-        followingInProgress: state.usersPage.followingInProgress,
+        isFetching: getIsFetching(state),
+
+        followingInProgress: getFollowingInProgress(state),
 
     }
 }
+
+
 // let mapDispatchToProps=(dispatch)=>{
 //     return{
 //         follow:(userId)=>{

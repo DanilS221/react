@@ -46,16 +46,16 @@ let mapStateToProps=(state)=>{
 }
 let mapDispatchToProps=(dispatch)=>{
     return{
-        updateNewPostText:(text)=>{
-            if(text.length<8){
-                let newVar = updateNewPostTextActionCreator(text);
-                dispatch(newVar);
-            }
-
-
-        },
-        addPost:()=>{
-            dispatch(addPostActionCreator());
+        // updateNewPostText:(text)=>{
+        //     if(text.length<8){
+        //         let newVar = updateNewPostTextActionCreator(text);
+        //         dispatch(newVar);
+        //     }
+        //
+        //
+        // },
+        addPost:(textNewPost)=>{
+            dispatch(addPostActionCreator(textNewPost));
         }
 
     }

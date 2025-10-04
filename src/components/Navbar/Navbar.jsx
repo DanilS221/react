@@ -5,7 +5,7 @@ import friends from "./Friends/Friends";
 import Friends from "./Friends/Friends";
 
 
-const Navbar = (props) =>{
+const  Navbar = (props) =>{
 
     let state = props.friends
     let friendsElement = state.friend.map(d=>{return (<Friends avatar={d.avatar} name={d.name} key={d.id}/>)})
